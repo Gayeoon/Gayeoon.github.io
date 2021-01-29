@@ -4,8 +4,7 @@ title: "Tech Interview - Java"
 subtitle: "Java CS 정리"  
 categories: interview
 tags: Tech JAVA OS DB NETWORK
-comments: true  
-header-img: img/review/2020-08-28-review-book-brain-lies-1.png
+comments: false  
 ---  
 
 ## Tech Interview 준비 - Java
