@@ -1,7 +1,7 @@
 ---
 layout: list
 title: Tech Interview
-slug: Tech Interview
+slug: interview
 menu: true
 submenu: false
 order: 8

@@ -7,7 +7,7 @@ order: 10
 
 <br>
 
-<center><h2>Name</h2>김 가 연 (Gayeon Kim)</center>
+<h2>Name</h2>김 가 연 (Gayeon Kim)
 
 <br>
 
@@ -16,7 +16,7 @@ order: 10
   <span class="two"></span>
 </span>
 
-<h2><center>Experience</center></h2>
+<h2>Experience</h2>
 
 * 2015 . 10 ~ 2015 . 12 <a href="#Volunteer">대전/충청지역 인문고생을 대상으로 **앱 프로그래밍 교육 봉사**</a>
 

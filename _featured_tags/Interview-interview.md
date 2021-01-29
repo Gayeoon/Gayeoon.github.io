@@ -1,7 +1,7 @@
 ---
 layout: tag-blog
 title: Tech Interview
-slug: Tech Interview
+slug: interview
 category: interview
 menu: false
 order: 1
