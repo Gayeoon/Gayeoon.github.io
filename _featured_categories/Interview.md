@@ -4,7 +4,7 @@ title: Tech Interview
 slug: interview
 menu: true
 submenu: false
-order: 3
+order: 5
 description: >
   기술면접 준비
 ---
