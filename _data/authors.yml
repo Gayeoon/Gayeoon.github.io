@@ -3,7 +3,7 @@
 # Change `qwtel` to your shortname (used in the front matter to set a page's author, e.g. `author: qwtel`).
 theorydb:
   name:              min
-  email:             theorydb@gmail.com
+  email:             rkdus0778@gmail.com
 
   # Used at the bottom of each page and at the top of the `about` layout
   # Markdown enabled, can use multiple paragraphs (enabled by `|`)
@@ -26,13 +26,13 @@ theorydb:
     # twitter:         <username>
     # google:          <number>
     # vk:              <username>
-     youtube:         UCpE6yaUc5LiNNJJ6RiQMK9g
+    # youtube:         UCpE6yaUc5LiNNJJ6RiQMK9g
     # vimeo:           <username>
     # vine:            <username>
     # spotify:         <user>/<number>
     # soundcloud:      <username>
     # lastfm:          <username>
-    # instagram:       <username>
+     instagram:       
     # flickr:          <string@string>
     # 500px:           <username>
     # dribbble:        <username>
