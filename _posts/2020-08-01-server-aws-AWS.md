@@ -3,7 +3,7 @@ layout: post
 title: "AWS 서버 구축하기 - 도메인 & HTTPS 적용"  
 subtitle: "AWS 서버 구축하기 - 도메인 & HTTPS 적용"  
 categories: server
-tags: AWS Server Domain HTTPS
+tags: aws AWS Server Domain HTTPS
 comments: false  
 --- 
 

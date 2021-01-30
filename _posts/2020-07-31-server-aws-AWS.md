@@ -3,7 +3,7 @@ layout: post
 title: "AWS 서버 구축하기 - APM 설치 및 외부접속 허용하기"  
 subtitle: "AWS 서버 구축하기 - APM 설치 및 외부접속 허용하기"  
 categories: server
-tags: AWS Server NPM
+tags: aws Server NPM
 comments: false  
 --- 
 

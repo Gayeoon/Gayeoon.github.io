@@ -3,7 +3,7 @@ layout: post
 title: "Local 서버 구축하기"  
 subtitle: "Local 서버 구축하기"  
 categories: server
-tags: Window Server Portforwarding
+tags: local Window Server Portforwarding
 comments: false  
 --- 
 

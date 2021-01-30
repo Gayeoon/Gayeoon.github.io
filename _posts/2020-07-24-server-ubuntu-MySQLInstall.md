@@ -3,7 +3,7 @@ layout: post
 title: "MySQL 설치"  
 subtitle: "우분투 16.04LTS에 APM 소스 설치하기 - MySQL 설치"  
 categories: server
-tags: Ubuntu MySQL APM
+tags: ubuntu MySQL APM
 comments: false  
 ---  
 ## MySQL 설치

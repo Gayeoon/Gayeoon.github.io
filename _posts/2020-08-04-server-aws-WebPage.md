@@ -3,7 +3,7 @@ layout: post
 title: "AWS 서버에 웹페이지 올리기"  
 subtitle: "AWS 서버에 웹페이지 올리기"  
 categories: server
-tags: AWS Server WebPage
+tags: aws AWS Server WebPage
 comments: false  
 ---  
 
