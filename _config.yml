@@ -18,7 +18,7 @@ tagline:             "Study records.."
 # A short description of the page, used in the sidebar and as fallback for the meta description tag.
 # Markdown enabled, but don't use more than one paragraph (enforced by `>`)
 description:         >
-  I am a developer :)
+  I am a growing developer! :)
 
 # This should be the same author as first entry in `_data/authors.yml`
 author:
@@ -51,7 +51,7 @@ disqus: True
 disqus_shortname:    Gayeon's blog
 
 # This text will appear in the footer of every page. Markdown enabled.
-copyright:           '&copy; 2019.04. by theorydb'
+copyright:           '&copy; 2021.01. by gayeon'
 
 # Format of the permalinks
 permalink:           pretty
