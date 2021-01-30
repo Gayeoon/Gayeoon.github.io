@@ -22,11 +22,11 @@ theorydb:
   # Comment/uncommet to show/hide
   # Icons appear in order, can be rearranged:
   social:
-    #facebook:        
+    facebook:        cantouchmin
     # twitter:         <username>
     # google:          <number>
     # vk:              <username>
-     youtube:         https://www.youtube.com/watch?v=0-q1KafFCLU
+    # youtube:         <string_string_string>
     # vimeo:           <username>
     # vine:            <username>
     # spotify:         <user>/<number>
@@ -59,6 +59,7 @@ theorydb:
     # paypal:          <username>
     email:           mailto:rkdus0778@gmail.com
     rss:             https://gayeoon.github.io
+
 # Another author
 mdo:
   name:              <firtname> <lastname>
