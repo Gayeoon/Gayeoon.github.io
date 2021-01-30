@@ -2,7 +2,7 @@
 layout: post  
 title: "PHP 설치"  
 subtitle: "우분투 16.04LTS에 APM 소스 설치하기 - PHP 설치"  
-categories: ubuntu
+categories: server
 tags: Ubuntu MySQL APM
 comments: false  
 ---  
