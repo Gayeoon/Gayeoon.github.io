@@ -58,7 +58,7 @@
   youtube:
     name: YouTube
     icon: icon-youtube
-    prepend: "https://www.youtube.com/watch?v="
+    prepend: "https://www.youtube.com/watch?v=dUDyy8urAsM"
   twitch:
     name: Twitch
     icon: icon-twitch
