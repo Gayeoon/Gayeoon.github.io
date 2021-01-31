@@ -56,7 +56,7 @@ MVC : Model, View, Controller
 - 기본 객체처리: MappingJackson2HttpMessageConverter  
 - byte 처리 등등 기타 여러 HttpMessageConverter가 기본으로 등록되어 있음  
 
-```
+{% highlight java %}
 @GetMapping("hello-api")
 @ResponseBody
 public Hello helloApi(@RequestParam("name") String name) {
@@ -64,7 +64,8 @@ public Hello helloApi(@RequestParam("name") String name) {
 	hello.setName(name);
 	return hello;
 }
-```
+{% endhighlight %}
+
 @ResponseBody 를 사용하고, 객체를 반환하면 객체가 JSON으로 변환됩니다.  
 
 ![spring img](/assets/spring/4.JPG) 
@@ -89,24 +90,27 @@ public Hello helloApi(@RequestParam("name") String name) {
 한번에 여러 테스트를 실행하면 메모리 DB에 직전 테스트의 결과가 남을 수 있습니다. 그럴 경우 이전 테스트 때문에 다음 테스트가 실패하는 상황이 벌어집니다.&#128543;  
 @AfterEach 를 사용하면 각 테스트가 종료될 때 마다 이 기능을 실행하게 됩니다.  
 이것을 이용해서 DB에 저장된 데이터를 삭제할 수 있습니다.&#128521;  
-```
+
+{% highlight java %}
 @AfterEach
 public void afterEach() {
 	memberRepository.clearStore();
 }
-```
+{% endhighlight %}
+
 &#10024; 테스트는 각각 독립적으로 실행되어야 합니다! 테스트 순서에 의존관계가 있는 것은 좋은 테스트가 아닙니다!&#128581;  
 
 - @BeforeEach  
 각 테스트 실행 전에 호출됩니다.  
 테스트가 서로 영향이 없도록 항상 새로운 객체를 생성하고,의존관계도 새로 맺어줍니다.  
-```
+
+{% highlight java %}
 @BeforeEach
 public void beforeEach() {
 	memberRepository = new MemoryMemberRepository();
 	memberService = new MemberService(memberRepository);
 }
-```
+{% endhighlight %}
 
 <br>
 <hr>
@@ -133,7 +137,7 @@ public void beforeEach() {
 
 ### &#128204; 자바 코드로 스프링 빈 등록
 
-```
+{% highlight java %}
 @Configuration
 public class SpringConfig {
 	@Bean
@@ -145,7 +149,8 @@ public class SpringConfig {
 		return new MemoryMemberRepository();
 	}
 }
-```
+{% endhighlight %}
+
 - DI에는 필드 주입, setter 주입, 생성자 주입 이렇게 3가지 방법이 있습니다.  
 - 하지만 의존관계가 실행중에 동적으로 변하는 경우는 거의 없으므로 생성자 주입을 권장한다고 합니당!  
 - 실무에서는 주로 정형화된 컨트롤러, 서비스, 리포지토리 같은 코드는 컴포넌트 스캔을 사용합니다.  
@@ -173,28 +178,32 @@ public class SpringConfig {
 - SQL과 데이터 중심의 설계에서 객체 중심의 설계로 패러다임을 전환을 할 수 있습니다.  
 - 개발 생산성을 크게 높일 수 있습니다.  
 
-```
+{% highlight java %}
 implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 runtimeOnly 'com.h2database:h2'
-```
+{% endhighlight %}
+
 build.gradle 파일에 JPA, h2 데이터베이스 관련 라이브러리를 추가해줍니다.  
 
-```
+{% highlight java %}
 import org.springframework.transaction.annotation.Transactional
 @Transactional
 public class MemberService {}
-```
+{% endhighlight %}
+
 - 서비스 계층에 트랜잭션을 추가해줍니다.  
 - 스프링은 해당 클래스의 메서드를 실행할 때 트랜잭션을 시작하고, 메서드가 정상 종료되면 트랜잭션을
 커밋합니다. 만약 런타임 예외가 발생하면 롤백합니다.  
 - **JPA를 통한 모든 데이터 변경은 트랜잭션 안에서 실행해야 합니다.**  
 
 ### &#128204; 스프링 데이터 JPA
-```
+
+{% highlight java %}
 public interface SpringDataJpaMemberRepository extends JpaRepository<Member, Long>, MemberRepository {
 	Optional<Member> findByName(String name);
 }
-```
+{% endhighlight %}
+
 &#10140; 스프링 데이터 JPA가 SpringDataJpaMemberRepository 를 스프링 빈으로 자동 등록해줍니다.  
 
 ![spring img](/assets/spring/6.JPG)   
@@ -211,7 +220,7 @@ public interface SpringDataJpaMemberRepository extends JpaRepository<Member, Lon
 	
 <br/>
 
-```
+{% highlight java %}
 long start = System.currentTimeMillis();
 try {
 	
@@ -222,7 +231,7 @@ try {
 	long timeMs = finish - start;
 	System.out.println("join " + timeMs + "ms");
 }
-```
+{% endhighlight %}
 
 ![spring img](/assets/spring/7.JPG)  
 - 문제점
@@ -236,7 +245,7 @@ try {
 
 ![spring img](/assets/spring/8.JPG)  
 
-```
+{% highlight java %}
 @Component
 @Aspect
 public class TimeTraceAop {
@@ -253,7 +262,7 @@ public class TimeTraceAop {
 		}
 	}
 }
-```
+{% endhighlight %}
 
 `@Around()`를 이용해서 원하는 곳만 적용할 수 있습니다!  
 
