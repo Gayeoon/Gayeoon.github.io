@@ -36,7 +36,7 @@ comments: false
 - 생성한 객체 인스턴스의 참조(레퍼런스)를 **생성자를 통해서 연결**해줍니다.  
 &#10140; 관심사의 분리 : 객체를 생성하고 연결하는 역할과 실행하는 역할을 분리하는 것!  
 
-```
+{% highlight java %}
 public class AppConfig {
 	public MemberService memberService() {
 		return new MemberServiceImpl(new MemoryMemberRepository());
@@ -48,11 +48,11 @@ public class AppConfig {
 			new FixDiscountPolicy());
 	}
 }
-```
+{% endhighlight %}
 
 MemberServiceImpl - 생성자 주입  
 
-```
+{% highlight java %}
 public class MemberServiceImpl implements MemberService {
 	private final MemberRepository memberRepository;
 	
@@ -60,11 +60,11 @@ public class MemberServiceImpl implements MemberService {
 		this.memberRepository = memberRepository;
 	}
 }
-```
+{% endhighlight %}
 
 OrderServiceImpl - 생성자 주입 (두개!)  
 
-```
+{% highlight java %}
 public class OrderServiceImpl implements OrderService {
 	private final MemberRepository memberRepository;
 	private final DiscountPolicy discountPolicy;
@@ -74,11 +74,11 @@ public class OrderServiceImpl implements OrderService {
 		this.discountPolicy = discountPolicy;
 	}
 }
-```
+{% endhighlight %}
 
 ### &#128204; JUnit Test
 
-```
+{% highlight java %}
 class MemberServiceTest {
 	MemberService memberService;
 	
@@ -88,7 +88,7 @@ class MemberServiceTest {
 		memberService = appConfig.memberService();
 	}
 }
-```
+{% endhighlight %}
 <br>
 <hr>
 
@@ -96,7 +96,7 @@ class MemberServiceTest {
 생성자를 호출하는 중복된 코드를 줄여봅시다!!  
 `return new MemberServiceImpl(new MemoryMemberRepository());` 요렇게 호출했던 것을 메소드로 분리합니다.  
 
-```
+{% highlight java %}
 public class AppConfig {
     public MemberService memberService() {
         return new MemberServiceImpl(memberRepository());
@@ -116,7 +116,7 @@ public class AppConfig {
         return new FixDiscountPolicy();
     }
 }
-```
+{% endhighlight %}
 
 중복이 제거되었습니다.&#128582;  
 구성 정보에서 역할과 구현을 명확하게 분리하면서 역할이 잘 들어나게 되었습니당ㅎㅎ  

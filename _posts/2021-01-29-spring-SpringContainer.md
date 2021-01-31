@@ -10,9 +10,9 @@ comments: false
 
 ### &#128204; 스프링 컨테이너
 
-```
+{% highlight java %}
 ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
-```
+{% endhighlight %}
 
 - @Configuration : AppConfig에 설정을 구성한다는 뜻  
 - @Bean : 스프링 컨테이너에 스프링 빈으로 등록한다는 뜻  
@@ -47,7 +47,7 @@ ApplicationContext applicationContext = new AnnotationConfigApplicationContext(A
 
 #### 모든 빈 출력하기
 
-```
+{% highlight java %}
 void findAllBean() {
     String[] beanDefinitionNames = ac.getBeanDefinitionNames();
     for (String beanDefinitionName : beanDefinitionNames) {
@@ -55,7 +55,7 @@ void findAllBean() {
         System.out.println("name=" + beanDefinitionName + " object=" + bean);
     }
 }
-```
+{% endhighlight %}
 
 - 실행하면 스프링에 등록된 모든 빈 정보를 출력할 수 있습니다.  
 - ac.getBeanDefinitionNames() : 스프링에 등록된 모든 빈 이름을 조회합니다.  
@@ -63,7 +63,7 @@ void findAllBean() {
 
 #### 애플리케이션 빈 출력하기
 
-```
+{% highlight java %}
 void findApplicationBean() {
     String[] beanDefinitionNames = ac.getBeanDefinitionNames();
     
@@ -76,7 +76,7 @@ void findApplicationBean() {
         }
     }
 }
-```
+{% endhighlight %}
 
 - 스프링이 내부에서 사용하는 빈은 제외하고, 내가 등록한 빈만 출력할 수 있습니다.  
 - 스프링이 내부에서 사용하는 빈은 getRole()로 구분할 수 있습니다.  
@@ -90,24 +90,24 @@ void findApplicationBean() {
 - 조회 대상 스프링 빈이 없으면 예외 발생  
 	- NoSuchBeanDefinitionException: No bean named 'xxxxx' available  
 	
-```
+{% highlight java %}
 MemberService memberService = ac.getBean("memberService", MemberService.class);
 assertThat(memberService).isInstanceOf(MemberServiceImpl.class);
-```
+{% endhighlight %}
 
 #### 타입으로 빈 조회하기
 
-```
+{% highlight java %}
 MemberService memberService = ac.getBean(MemberService.class);
 assertThat(memberService).isInstanceOf(MemberServiceImpl.class);
-```
+{% endhighlight %}
 
 #### 구체적인 타입으로 빈 조회하기
 
-```
+{% highlight java %}
 MemberServiceImpl memberService = ac.getBean("memberService", MemberServiceImpl.class);
 assertThat(memberService).isInstanceOf(MemberServiceImpl.class);
-```
+{% endhighlight %}
 
 - 타입으로 조회시 같은 타입이 둘 이상 있으면 중복 오류 발생  
 	- NoUniqueBeanDefinitionException  
