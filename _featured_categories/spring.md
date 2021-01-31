@@ -6,5 +6,5 @@ menu: true
 submenu: false
 order: 2
 description: >
-  Spring study
+  Spring Framework 이론 정리
 ---

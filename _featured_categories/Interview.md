@@ -6,5 +6,5 @@ menu: true
 submenu: false
 order: 5
 description: >
-  기술면접 준비
+  기술면접을 위한 CS 정리
 ---

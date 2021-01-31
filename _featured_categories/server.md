@@ -6,5 +6,5 @@ menu: true
 submenu: true
 order: 1
 description: >
-  우분투 16.04LTS에 APM 소스 설치하기
+  Ubuntu, Local, AWS APM(NPM) 설치 및 서버 구축하기
 ---
