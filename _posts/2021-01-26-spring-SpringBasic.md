@@ -124,9 +124,9 @@ public void beforeEach() {
 	- 자바 코드로 직접 스프링 빈 등록하기  
 
 ### &#128204; 컴포넌트 스캔
-- @Component 애노테이션이 있으면 스프링 빈으로 자동 등록됩니다.   
+- @Component 어노테이션이 있으면 스프링 빈으로 자동 등록됩니다.   
 &#128226; @Controller 컨트롤러가 스프링 빈으로 자동 등록된 이유도 컴포넌트 스캔 때문입니다!!  
-- @Component 를 포함하는 다음 애노테이션도 스프링 빈으로 자동 등록됩니다.  
+- @Component 를 포함하는 다음 어노테이션도 스프링 빈으로 자동 등록됩니다.  
 	- @Controller  
 	- @Service  
 	- @Repository  
