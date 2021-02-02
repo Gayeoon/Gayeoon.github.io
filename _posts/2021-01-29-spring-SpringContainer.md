@@ -61,7 +61,7 @@ void findAllBean() {
 - ac.getBeanDefinitionNames() : 스프링에 등록된 모든 빈 이름을 조회합니다.  
 - ac.getBean() : 빈 이름으로 빈 객체(인스턴스)를 조회합니다.  
 
-#### 애플리케이션 빈 출력하기
+#### 어플리케이션 빈 출력하기
 
 {% highlight java %}
 void findApplicationBean() {
