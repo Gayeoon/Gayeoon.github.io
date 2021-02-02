@@ -150,3 +150,104 @@ AppConfig 처럼 객체를 생성하고 관리하면서 의존관계를 연결�
 
 <br>
 <hr>
+### &#128204; @ComponentScan
+![spring img](/assets/spring/16.JPG)  
+@ComponentScan은 @Component가 붙은 모든 클래스를 스프링 빈으로 등록합니다.  
+이때 스프링 빈의 기본 이름은 클래스명을 사용하되 맨 앞글자만 소문자를 사용합니다.  
+- 빈 이름 기본 전략: MemberServiceImpl 클래스 memberServiceImpl  
+- 빈 이름 직접 지정: 만약 스프링 빈의 이름을 직접 지정하고 싶으면 `@Component("memberService2")` 이런식으로 이름을 부여하면 됩니다.  
+
+### &#128204; @Autowired
+![spring img](/assets/spring/17.JPG)  
+생성자에 @Autowired를 지정하면, 스프링 컨테이너가 자동으로 해당 스프링 빈을 찾아서 주입합니다.  
+이때 기본 조회 전략은 타입이 같은 빈을 찾아서 주입합니다.  
+- `getBean(MemberRepository.class)`와 동일합니다.  
+
+### &#128204; 탐색 위치 지정
+모든 자바 클래스를 다 컴포넌트 스캔하면 시간이 오래 걸리기 때문에 시작 위치를 정해서 필요한 위치부터 탐색하도록 해야 합니다.  
+
+{% highlight java %}
+@ComponentScan(basePackages = "hello.core",}
+{% endhighlight %}
+
+- basePackages : **탐색할 패키지의 시작 위치를 지정**합니다. 이 패키지를 포함해서 하위 패키지를 모두 탐색합니다.  
+	* basePackages = {"hello.core", "hello.service"} 이렇게 여러 시작 위치를 지정할 수도 있습니다.  
+- basePackageClasses : 지정한 **클래스의 패키지**를 탐색 시작 위치로 지정합니다.  
+- 만약 지정하지 않으면 @ComponentScan이 붙은 설정 정보 클래스의 패키지가 시작 위치가 됩니다.  
+
+&#128226; 패키지 위치를 지정하지 말고, 설정 정보 클래스의 위치를 프로젝트 **최상단**에 두자!  
+스프링 부트를 사용하면 스프링 부트의 대표 시작 정보인 @SpringBootApplication를 이 프로젝트 시작 루트 위치에 두는 것이 관례입니다. (그리고 이 설정안에 바로 @ComponentScan 이 들어있습니다!)  
+
+### &#128204; 컴포넌트 스캔 기본 대상
+컴포넌트 스캔은 @Component 뿐만 아니라 다음과 내용도 추가로 대상에 포함합니다.  
+- @Component : 컴포넌트 스캔에서 사용 스프링  
+- @Controlller : 스프링 MVC 컨트롤러에서 사용  
+	MVC 컨트롤러로 인식합니다.  
+- @Service : 스프링 비즈니스 로직에서 사용  
+	비즈니스 계층을 인식하는데 도움을 줍니다.  
+- @Repository : 스프링 데이터 접근 계층에서 사용  
+	스프링 데이터 접근 계층으로 인식하고, 데이터 계층의 예외를 스프링 예외로 변환합니다.  
+- @Configuration : 스프링 설정 정보에서 사용  
+	스프링 설정 정보로 인식하고, 스프링 빈이 싱글톤을 유지하도록 추가 처리를 합니다.  
+
+&#128226; 어노테이션에는 상속관계라는 것이 없습니다. 그래서 이렇게 어노테이션이 특정 어노테이션을 들고 있는 것을 인식할 수 있는 것은 자바 언어가 지원하는 기능은 아니고, 스프링이 지원하는 기능입니다.  
+
+{% highlight java %}
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+public @interface MyIncludeComponent {}
+
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+public @interface MyExcludeComponent {}
+{% endhighlight %}
+
+{% highlight java %}
+@ComponentScan(
+	includeFilters = @Filter(type = FilterType.ANNOTATION, classes = MyIncludeComponent.class),
+	excludeFilters = @Filter(type = FilterType.ANNOTATION, classes = MyExcludeComponent.class)
+)
+{% endhighlight %}
+
+includeFilters에 MyIncludeComponent 어노테이션을 추가해서 BeanA가 스프링 빈에 등록됩니다.  
+excludeFilters에 MyExcludeComponent 어노테이션을 추가해서 BeanB는 스프링 빈에 등록되지 않습니다.  
+
+### &#128204; FilterType
+- ANNOTATION: 기본값, 애노테이션을 인식해서 동작합니다.  
+	ex) `org.example.SomeAnnotation`  
+- ASSIGNABLE_TYPE: 지정한 타입과 자식 타입을 인식해서 동작합니다.  
+	ex) `org.example.SomeClass`  
+- ASPECTJ: AspectJ 패턴 사용  
+	ex) `org.example..*Service+`  
+- REGEX: 정규 표현식  
+	ex) `org\.example\.Default.*`  
+- CUSTOM: TypeFilter 이라는 인터페이스를 구현해서 처리합니다.  
+	ex) `org.example.MyTypeFilter`  
+
+### &#128204; 중복 등록과 충돌
+
+#### 자동 빈 등록 vs 자동 빈 등록
+컴포넌트 스캔에 의해 자동으로 스프링 빈이 등록되는데, 그 이름이 같은 경우 스프링은 오류를 발생시킵니다.  
+	`ConflictingBeanDefinitionException` 예외 발생 ~~거의 없음&#128581;~~  
+
+#### 수동 빈 등록 vs 자동 빈 등록
+수동 빈 등록이 우선권을 가집니다.  
+&#128226; 수동 빈이 자동 빈을 오버라이딩 해버립니다.  
+
+{% highlight text %}
+Overriding bean definition for bean 'memoryMemberRepository' with a different
+definition: replacing
+{% endhighlight %}
+
+하지만 현실은 의도한 것이 아닌 여러 설정이 꼬이면서 이런 결과가 발생합니다.&#128543;  
+
+{% highlight text %}
+Consider renaming one of the beans or enabling overriding by setting
+spring.main.allow-bean-definition-overriding=true
+{% endhighlight %}
+
+그래서 최근 스프링부트에서는 다음과 같은 오류가 발생하도록 기본값을 바꾸었습니다.  
+
+
