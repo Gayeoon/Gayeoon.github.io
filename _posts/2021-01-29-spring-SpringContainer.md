@@ -17,7 +17,7 @@ ApplicationContext applicationContext = new AnnotationConfigApplicationContext(A
 - @Configuration : AppConfig에 설정을 구성한다는 뜻  
 - @Bean : 스프링 컨테이너에 스프링 빈으로 등록한다는 뜻  
 - ApplicationContext를 스프링 컨테이너라 합니다.  
-- 스프링 컨테이너는 XML을 기반으로 만들 수 있고, 애노테이션 기반의 자바 설정 클래스로 만들 수 있습니다.  
+- 스프링 컨테이너는 XML을 기반으로 만들 수 있고, 어노테이션 기반의 자바 설정 클래스로 만들 수 있습니다.  
 	&#10140; 요즘은 어노테이션 기반으로만 만든다!!  
 - 기존에는 개발자가 직접 자바코드로 모든 것을 했다면 이제부터는 스프링 컨테이너에 객체를 스프링 빈으로 등록하고, 스프링 컨테이너에서 스프링 빈을 찾아서 사용하도록 변경되었습니다.  
 
@@ -297,9 +297,9 @@ public class NetworkClient implements InitializingBean, DisposableBean {
 #### 어노테이션
 `@PostConstruct`, `@PreDestroy` 두 개의 어노테이션을 사용해서 편리하게 초기화와 종료를 실행할 수 있습니다.  
 
-**@PostConstruct, @PreDestory 애노테이션 특징**
+**@PostConstruct, @PreDestory 어노테이션 특징**
 - 최신 스프링에서 가장 권장하는 방법입니다.  
-- 애노테이션 하나만 붙이면 되므로 매우 편리합니다.  
+- 어노테이션 하나만 붙이면 되므로 매우 편리합니다.  
 - 패키지를 잘 보면 javax.annotation.PostConstruct 입니다. 스프링에 종속적인 기술이 아니라 JSR-250
 라는 자바 표준입니다. 따라서 스프링이 아닌 다른 컨테이너에서도 동작합니다.  
 - 컴포넌트 스캔과 잘 어울립니다.  
