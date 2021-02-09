@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "의존관계 자동 주입"
-subtitle:   "의존관계 자동 주입""
+subtitle:   "의존관계 자동 주입"
 categories: spring
 tags: Spring DI 
 comments: false
