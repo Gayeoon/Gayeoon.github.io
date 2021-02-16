@@ -6,5 +6,5 @@ menu: true
 submenu: false
 order: 5
 description: >
-  Software Test 이론 정리
+  Software Test 이론 정리 ( ISTQB 공부 )
 ---
