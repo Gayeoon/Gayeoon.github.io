@@ -165,4 +165,3 @@ application.yml 같은 .yml 파일은 띄어쓰기 2칸으로 계층을 만든�
 ![spring img](/assets/spring/38.JPG)  
 
 &#128226; 실제 코드에서는 DB에 소문자 + _(언더스코어) 스타일을 사용합니다!  
-

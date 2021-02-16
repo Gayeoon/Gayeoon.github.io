@@ -4,7 +4,7 @@ title: Tip
 slug: tip
 menu: true
 submenu: false
-order: 6
+order: 7
 description: >
   Tip!
 ---
