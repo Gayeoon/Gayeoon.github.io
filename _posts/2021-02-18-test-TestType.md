@@ -2,7 +2,7 @@
 layout: post
 title:  "Software Test 종류와 방법"
 subtitle:   "Software Test 종류와 방법"
-categories: test
+categories: test ISTQB
 tags: test
 comments: false
 ---
